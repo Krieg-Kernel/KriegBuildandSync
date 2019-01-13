@@ -53,7 +53,6 @@ Spam () {
 	EchoRed "(_______|_______/  )_(     |/ \___/(_______|_______(_______/  )_(  (_______(______(_)      "
 }
 build () {
-    mkdir -p ${REPO_ROOT}/AnyKernelBase/kernels/custom/$1 ${REPO_ROOT}/AnyKernelBase/kernels/oos/$1
     
     LOCAL_VERSION="Krieg-EAS$ZIPNAME-${VERSION}"
     sed -i -r "s/(CONFIG_LOCALVERSION=).*/\1\"-${LOCAL_VERSION}\"/" ${REPO_ROOT}/OP5-OP5T/arch/arm64/configs/krieg_defconfig
@@ -80,7 +79,7 @@ build () {
         EchoRed "Build for #1 failed! Aborting further processing!"
     else
         # Move image to AK2
-        cp -f "${REPO_ROOT}/OP5-OP5T/out/arch/arm64/boot/Image.gz-dtb" "${REPO_ROOT}/AnyKernelBase/kernels/custom/$1/Image.gz-dtb"
+        cp -f "${REPO_ROOT}/OP5-OP5T/out/arch/arm64/boot/Image.gz-dtb" "${REPO_ROOT}/AnyKernelBase/Image.gz-dtb"
         EchoGreen "Build for $1 complete"
     fi
     
@@ -108,10 +107,10 @@ BUILD_SUCCESS="999"
 buildshit=false; syncshit=false
 
 # If not defined gives long compiler name
-export COMPILER_NAME="CLANG-8.0.4"
+export COMPILER_NAME="CLANG-8.0.7"
 
 # Clang and GCC paths
-CLANG=${REPO_ROOT}/Toolchains/linux-x86/clang-r344140b/bin/clang
+CLANG=${REPO_ROOT}/Toolchains/linux-x86/clang-r346389c/bin/clang
 if [ ${USE_CCACHE:-"0"} = "1" ]; then
     CLANG="ccache ${CLANG}"
 fi
