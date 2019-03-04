@@ -107,10 +107,10 @@ BUILD_SUCCESS="999"
 buildshit=false; syncshit=false
 
 # If not defined gives long compiler name
-export COMPILER_NAME="CLANG-8.0.7"
+export COMPILER_NAME="CLANG-8.0.9"
 
 # Clang and GCC paths
-CLANG=${REPO_ROOT}/Toolchains/linux-x86/clang-r346389c/bin/clang
+CLANG=${REPO_ROOT}/Toolchains/linux-x86/clang-r349610b/bin/clang
 if [ ${USE_CCACHE:-"0"} = "1" ]; then
     CLANG="ccache ${CLANG}"
 fi
